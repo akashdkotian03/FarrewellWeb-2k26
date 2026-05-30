@@ -136,34 +136,138 @@
         }
         .hero p { color: var(--gold-shimmer); margin-bottom: 20px; }
 
-        /* NAVIGATION BAR */
-        .filter-nav {
-            display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;
-            position: sticky; top: 0; z-index: 100;
-            background: rgba(19, 7, 12, 0.9);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            padding: 15px 20px; 
-            border-bottom: 1px solid rgba(255, 215, 0, 0.15);
-        }
-
-        .filter-btn {
-            background: rgba(255, 255, 255, 0.04); 
-            color: #cbd5e1; 
-            border: 1px solid rgba(255, 215, 0, 0.15);
-            padding: 8px 20px; border-radius: 30px; cursor: pointer;
-            font-weight: 600; font-size: 0.85rem; transition: all 0.3s ease;
-            text-transform: uppercase;
-        }
-
-        .filter-btn:hover, .filter-btn.active {
-            background: linear-gradient(90deg, rgba(255, 215, 0, 0.25), rgba(244, 63, 94, 0.35)); 
-            color: white; 
-            border-color: var(--gold-bright);
-            box-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
-        }
-
         .container { max-width: 1400px; margin: 40px auto; padding: 0 20px; }
+
+        /* LUXE GRID DASHBOARD INTERFACE */
+        .dashboard-section {
+            max-width: 1200px;
+            margin: 20px auto 40px auto;
+            text-align: center;
+        }
+        
+        .dashboard-title {
+            color: var(--gold-shimmer);
+            margin-bottom: 35px;
+            font-weight: 400;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-size: 1.3rem;
+            text-shadow: 0 0 10px rgba(255,215,0,0.2);
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        /* Large Button Memory Card Styles */
+        .large-memory-btn {
+            height: 380px;
+            border-radius: 16px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            background-size: cover;
+            background-position: center;
+            background-color: var(--card-bg);
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease, border-color 0.3s;
+        }
+
+        .large-memory-btn:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: var(--gold-bright);
+            box-shadow: 0 20px 40px rgba(255, 215, 0, 0.15), 0 15px 35px rgba(0,0,0,0.7);
+        }
+
+        .card-gradient-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to bottom, rgba(19, 7, 12, 0.1), rgba(19, 7, 12, 0.5) 50%, rgba(19, 7, 12, 0.95));
+            display: flex;
+            align-items: flex-end;
+            padding: 30px 25px;
+        }
+
+        .btn-card-content {
+            text-align: left;
+            width: 100%;
+        }
+
+        .btn-card-content h3 {
+            color: var(--gold-bright);
+            font-size: 1.7rem;
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+        }
+
+        .btn-card-content .card-quote {
+            color: #cbd5e1;
+            font-size: 0.9rem;
+            font-style: italic;
+            line-height: 1.5;
+            margin-bottom: 20px;
+            font-family: 'Georgia', serif;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+        }
+
+        .action-badge {
+            display: inline-block;
+            background: rgba(255, 215, 0, 0.08);
+            color: var(--gold-shimmer);
+            padding: 8px 18px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            backdrop-filter: blur(4px);
+            transition: all 0.3s ease;
+        }
+
+        .large-memory-btn:hover .action-badge {
+            background: var(--gold-bright);
+            color: var(--bg-royal);
+            border-color: var(--gold-bright);
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+        }
+
+        /* ROOM GALLERIES CONTAINER */
+        .gallery-holder-view {
+            display: none; /* Stays hidden until dashboard card link triggers open loop */
+        }
+
+        .gallery-control-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 2px dashed rgba(255, 215, 0, 0.15);
+            padding-bottom: 20px;
+            margin-bottom: 40px;
+        }
+
+        .return-home-btn {
+            background: rgba(255, 255, 255, 0.03);
+            color: #cbd5e1;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            padding: 10px 22px;
+            border-radius: 35px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            transition: all 0.3s;
+        }
+
+        .return-home-btn:hover {
+            background: rgba(255, 215, 0, 0.1);
+            color: var(--gold-bright);
+            border-color: var(--gold-bright);
+        }
         
         /* DYNAMIC ROOM CONTAINERS */
         .department-section {
@@ -171,19 +275,7 @@
             border: 1px solid rgba(255, 215, 0, 0.12);
             border-radius: 16px;
             padding: 35px;
-            margin-bottom: 60px;
             box-shadow: 0 15px 45px rgba(0,0,0,0.4);
-        }
-        
-        .department-section.hidden { display: none; }
-
-        .section-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            border-bottom: 2px dashed rgba(255, 215, 0, 0.15);
-            padding-bottom: 15px;
-            margin-bottom: 30px;
         }
 
         .section-title {
@@ -331,11 +423,26 @@
         <p>Explore full dynamic collections of photos and videos from each department.</p>
     </header>
 
-    <nav class="filter-nav" id="dynamic-nav-bar">
-        <button class="filter-btn active" id="all-btn" onclick="filterSection('all')">Show All Rooms</button>
-    </nav>
+    <main class="container">
+        <div class="dashboard-section" id="dashboard-hub">
+            <h2 class="dashboard-title">✨ Select a Memory Vault Below ✨</h2>
+            <div class="dashboard-grid" id="large-button-grid"></div>
+        </div>
 
-    <main class="container" id="dynamic-room-container"></main>
+        <div class="gallery-holder-view" id="gallery-stage">
+            <div class="gallery-control-header">
+                <div style="text-align: left;">
+                    <h2 class="section-title" id="active-room-title">Department Room</h2>
+                    <span class="section-badge" id="active-room-badge">0 Memories</span>
+                </div>
+                <button class="return-home-btn" onclick="returnToDashboard()">🏠 Close Album</button>
+            </div>
+            
+            <div class="department-section">
+                <div class="memory-grid" id="active-polaroid-grid"></div>
+            </div>
+        </div>
+    </main>
 
     <footer class="signing-off-footer">
         <div class="footer-content">
@@ -355,111 +462,129 @@
     <script src="gallery_data.js"></script>
 
     <script>
-        // CORE RENDERER ENGINE
-        function compileAllMemories() {
-            // Safety Check: Verify if data layout exists cleanly
+        // STATIC CONTENT CONFIGURATION FOR LARGE HOME BUTTON CARDS
+        const CardDesignAssets = {
+            'BA': {
+                image: 'https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?q=80&w=600',
+                quote: '"History keepers, language weavers. We didn\'t just study stories; we made our own."'
+            },
+            'BCA': {
+                image: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=600',
+                quote: '"From syntax errors to unforgettable logic. We coded our memories into existence."'
+            },
+            'BCOM': {
+                image: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=600',
+                quote: '"Balancing sheets and balancing life. Our greatest asset was always each other."'
+            },
+            'CULTURAL_FESTS': {
+                image: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=600',
+                quote: '"Where the music echoed, the stage came alive, and we shone brighter than the lights."'
+            }
+        };
+
+        // CORE DYNAMIC DASHBOARD GENERATOR
+        function generateMemoryDashboard() {
             if (typeof MemoryDatabase === 'undefined') {
-                document.getElementById('dynamic-room-container').innerHTML = `
-                    <div style="text-align:center; padding: 50px; color: var(--gold-bright);">
-                        <h3>⚠️ 'gallery_data.js' not found or empty!</h3>
-                        <p style="color:#cbd5e1; margin-top:10px;">Please run your Python configuration generator script to sync your asset files.</p>
+                document.getElementById('large-button-grid').innerHTML = `
+                    <div style="text-align:center; grid-column: 1/-1; padding: 50px; color: var(--gold-bright);">
+                        <h3>⚠️ 'gallery_data.js' maps missing!</h3>
+                        <p style="color:#cbd5e1; margin-top:10px;">Please run your Python generation engine script to establish links.</p>
                     </div>`;
                 return;
             }
 
-            const mainContainer = document.getElementById('dynamic-room-container');
-            const navBar = document.getElementById('dynamic-nav-bar');
+            const buttonGrid = document.getElementById('large-button-grid');
+            buttonGrid.innerHTML = ""; // Clear placeholders
 
-            // Iterate over every unique subfolder found by the script
             Object.keys(MemoryDatabase).forEach(category => {
                 const dataPool = MemoryDatabase[category];
-                if (dataPool.length === 0) return; // Skip folder tracks if empty
+                if (dataPool.length === 0) return; // Skip folder if empty
 
-                // 1. Build Navigation Button element dynamically
-                const navBtn = document.createElement('button');
-                navBtn.className = 'filter-btn';
-                navBtn.innerText = category.toUpperCase();
-                navBtn.onclick = function() { filterSection(category); };
-                navBtn.setAttribute('data-target', category);
-                navBar.appendChild(navBtn);
-
-                // 2. Build full Room Section block 
-                const section = document.createElement('section');
-                section.className = 'department-section';
-                section.id = `sec-${category}`;
-
-                section.innerHTML = `
-                    <div class="section-header">
-                        <h2 class="section-title">${category.replace('_', ' ').replace('-', ' ')} Room</h2>
-                        <span class="section-badge">${dataPool.length} Memories Loaded</span>
-                    </div>
-                    <div class="memory-grid" id="grid-${category}"></div>
-                `;
-                mainContainer.appendChild(section);
-
-                // 3. Loop images & videos directly inside the new room grid
-                const targetGrid = document.getElementById(`grid-${category}`);
+                const cleanKey = category.toUpperCase();
                 
-                dataPool.forEach(item => {
-                    const card = document.createElement('div');
-                    card.className = 'memory-card';
-                    
-                    // Inject random polaroid tilt variations natively
-                    const subtleTilt = (Math.random() * 4 - 2).toFixed(2);
-                    card.style.transform = `rotate(${subtleTilt}deg)`;
+                // Pull localized layout configs or fall back to defaults if new folder added
+                const coverImage = CardDesignAssets[cleanKey]?.image || (dataPool[0] ? dataPool[0].src : '');
+                const deepQuote = CardDesignAssets[cleanKey]?.quote || '"Every shared smile, a classic chapter preserved forever inside our college canvas."';
+                const displayName = category.replace('_', ' ').replace('-', ' ');
 
-                    let mediaContentHTML = '';
-                    if (item.type === 'video') {
-                        mediaContentHTML = `
-                            <div class="media-wrapper" onclick="openVideoModal('${item.src}', '${item.title}')">
-                                <span class="media-badge">🎬 Video</span>
-                                <video src="${item.src}" muted loop autoplay playsinline></video>
-                            </div>`;
-                    } else {
-                        mediaContentHTML = `
-                            <div class="media-wrapper" onclick="openImageModal('${item.src}', '${item.title}')">
-                                <span class="media-badge photo-type">📸 Photo</span>
-                                <img src="${item.src}" alt="Memory Picture">
-                            </div>`;
-                    }
+                // Build Large Dynamic Action Button Card
+                const cardButton = document.createElement('div');
+                cardButton.className = `large-memory-btn`;
+                cardButton.style.backgroundImage = `url('${coverImage}')`;
+                cardButton.onclick = function() { openRoomGallery(category); };
 
-                    card.innerHTML = `
-                        <div class="frame-inner-accent">
-                            ${mediaContentHTML}
+                cardButton.innerHTML = `
+                    <div class="card-gradient-overlay">
+                        <div class="btn-card-content">
+                            <h3>${displayName.toUpperCase()}</h3>
+                            <p class="card-quote">${deepQuote}</p>
+                            <span class="action-badge">Open Vault (${dataPool.length} Items) 📂</span>
                         </div>
-                        <p class="caption" title="${item.title}">${item.title}</p>
-                    `;
-                    targetGrid.appendChild(card);
-                });
+                    </div>
+                `;
+                buttonGrid.appendChild(cardButton);
             });
         }
 
-        // Initialize Runtime Rendering 
-        compileAllMemories();
+        // Initialize Card Creation Routine
+        generateMemoryDashboard();
 
-        // LIVE FILTER CONFIGURATOR
-        function filterSection(sectionId) {
-            document.querySelectorAll('.filter-nav .filter-btn').forEach(btn => btn.classList.remove('active'));
+        // ROUTER VIEW MANAGEMENT CONTROL FLOWS
+        function openRoomGallery(category) {
+            const dataPool = MemoryDatabase[category];
+            const dashboardHub = document.getElementById('dashboard-hub');
+            const galleryStage = document.getElementById('gallery-stage');
+            const gridOutput = document.getElementById('active-polaroid-grid');
             
-            if (event && event.target) {
-                event.target.classList.add('active');
-            } else {
-                document.getElementById('all-btn').classList.add('active');
-            }
+            // Set Headers
+            document.getElementById('active-room-title').innerText = category.replace('_', ' ').replace('-', ' ') + " Room";
+            document.getElementById('active-room-badge').innerText = `${dataPool.length} Memories Active`;
+            
+            gridOutput.innerHTML = ""; // Flush old nodes
 
-            const sections = document.querySelectorAll('.department-section');
-            sections.forEach(sec => {
-                if (sectionId === 'all') {
-                    sec.classList.remove('hidden');
+            // Render matching subfolder assets as Polaroids
+            dataPool.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'memory-card';
+                
+                // Inject random polaroid tilt variations natively
+                const subtleTilt = (Math.random() * 4 - 2).toFixed(2);
+                card.style.transform = `rotate(${subtleTilt}deg)`;
+
+                let mediaContentHTML = '';
+                if (item.type === 'video') {
+                    mediaContentHTML = `
+                        <div class="media-wrapper" onclick="openVideoModal('${item.src}', '${item.title}')">
+                            <span class="media-badge">🎬 Video</span>
+                            <video src="${item.src}" muted loop autoplay playsinline></video>
+                        </div>`;
                 } else {
-                    if (sec.id === `sec-${sectionId}`) {
-                        sec.classList.remove('hidden');
-                        sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    } else {
-                        sec.classList.add('hidden');
-                    }
+                    mediaContentHTML = `
+                        <div class="media-wrapper" onclick="openImageModal('${item.src}', '${item.title}')">
+                            <span class="media-badge photo-type">📸 Photo</span>
+                            <img src="${item.src}" alt="Memory Picture">
+                        </div>`;
                 }
+
+                card.innerHTML = `
+                    <div class="frame-inner-accent">
+                        ${mediaContentHTML}
+                    </div>
+                    <p class="caption" title="${item.title}">${item.title}</p>
+                `;
+                gridOutput.appendChild(card);
             });
+
+            // Handle View Adjustments smoothly
+            dashboardHub.style.display = 'none';
+            galleryStage.style.display = 'block';
+            window.scrollTo({ top: document.getElementById('gallery-stage').offsetTop - 20, behavior: 'smooth' });
+        }
+
+        function returnToDashboard() {
+            document.getElementById('dashboard-hub').style.display = 'block';
+            document.getElementById('gallery-stage').style.display = 'none';
+            window.scrollTo({ top: document.getElementById('dashboard-hub').offsetTop - 20, behavior: 'smooth' });
         }
 
         /* ANIMATION CANVAS ENGINE FOR AMBIENT SPARKLES */
