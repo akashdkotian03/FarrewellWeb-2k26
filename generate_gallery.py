@@ -2,27 +2,26 @@ import json
 import cloudinary
 import cloudinary.api
 
-# 1. CONFIGURE YOUR CLOUDINARY CREDENTIALS (Get these from your Dashboard)
+# 1. CONFIGURE YOUR READY CLOUDINARY CREDENTIALS
 cloudinary.config(
-    cloud_name = "YOUR_CLOUD_NAME",
-    api_key = "YOUR_API_KEY",
-    api_secret = "YOUR_API_SECRET",
+    cloud_name = "dk9yhsklq",
+    api_key = "864777795557874",          # Your real Root API Key
+    api_secret = "gW4JmVP1aL8sG94MHdfXtnxzd-o", # Your real Root API Secret token
     secure = True
 )
 
 OUTPUT_FILE = "gallery_data.js"
-TARGET_REMOTE_FOLDER = "gallery" # The main folder we created in Cloudinary
+TARGET_REMOTE_FOLDER = "gallery"
 
 def scan_cloudinary_gallery():
     print("🌐 Connecting to Cloudinary Media Library...")
     memory_database = {}
 
     try:
-        # 2. Fetch all resources (images and videos) from Cloudinary
-        # We set max_results to 500 to catch large memory collections in one go
         raw_resources = []
         
-        # Fetch Images
+        # Fetch Images from Cloudinary
+        print("📸 Scanning for images...")
         img_response = cloudinary.api.resources(
             type = "upload",
             prefix = f"{TARGET_REMOTE_FOLDER}/",
@@ -30,7 +29,8 @@ def scan_cloudinary_gallery():
         )
         raw_resources.extend(img_response.get('resources', []))
 
-        # Fetch Videos
+        # Fetch Videos from Cloudinary
+        print("🎥 Scanning for videos...")
         vid_response = cloudinary.api.resources(
             resource_type = "video",
             type = "upload",
@@ -40,48 +40,49 @@ def scan_cloudinary_gallery():
         raw_resources.extend(vid_response.get('resources', []))
 
         if not raw_resources:
-            print("⚠️ No files found in your Cloudinary 'gallery/' folder. Check your upload paths!")
+            print("⚠️ No files found! Verify files are placed inside the 'gallery' folder on Cloudinary.")
             return
 
-        # 3. Sort and group files into their subfolder sections
+        # 3. Process and group assets dynamically
         for resource in raw_resources:
             public_id = resource.get('public_id', '')
-            
-            # Split path (e.g., "gallery/bca/class_pic") to isolate the subfolder name
             path_parts = public_id.split('/')
+            
             if len(path_parts) >= 3:
-                section = path_parts[1].lower() # This grabs 'bca', 'nss', etc.
+                # Keeps 'BA', 'BCA', 'BCOM' matching your folder layout casing
+                # Safely turns 'Cultural Fests' into 'Cultural_Fests' key token
+                section = path_parts[1].replace(' ', '_')
                 file_name = path_parts[2]
                 
                 if section not in memory_database:
                     memory_database[section] = []
 
-                # Determine dynamic media category type
+                # Group classification tag
                 media_type = 'video' if resource.get('resource_type') == 'video' else 'image'
                 
-                # Format clean visual captions out of raw filenames
+                # Transform raw filenames into pretty captions
                 clean_title = file_name.replace('_', ' ').replace('-', ' ').title()
                 
                 memory_database[section].append({
                     'type': media_type,
-                    'src': resource.get('secure_url'), # High-speed CDN streaming link
+                    'src': resource.get('secure_url'), # Secure https link
                     'title': clean_title
                 })
 
-        # 4. Write data structure smoothly to local js file
+        # 4. Generate the uniform JSON array file
         with open(OUTPUT_FILE, 'w', encoding='utf-8') as f:
             f.write(f"// Automatically compiled via Cloudinary Engine API\n")
             f.write(f"const MemoryDatabase = {json.dumps(memory_database, indent=4)};")
 
-        print("\n--- SCAN SUMMARY ---")
+        print("\n--- CLOUD SYNC SUMMARY ---")
         for sec, items in memory_database.items():
-            print(f"📦 Section [{sec.upper()}]: Synced {len(items)} files from Cloudinary.")
+            print(f"📦 Section [{sec}]: Packaged {len(items)} items successfully.")
             
-        print(f"\n✅ Build complete! '{OUTPUT_FILE}' is ready for deployment.")
+        print(f"\n✅ Build complete! '{OUTPUT_FILE}' has been populated with high-speed CDN URLs.")
 
     except Exception as e:
         print(f"❌ Error accessing Cloudinary API: {e}")
-        print("Please double-check your Cloud Name, API Key, and Secret.")
+        print("Please double-check your API Key and Secret configurations.")
 
 if __name__ == "__main__":
     scan_cloudinary_gallery()
