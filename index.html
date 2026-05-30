@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Lane | Seniors Farewell 2026</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: #0f172a;
+            color: #f8fafc;
+            padding-bottom: 50px;
+            overflow-x: hidden;
+        }
+
+        /* Hero Banner Section */
+        .hero {
+            text-align: center;
+            padding: 80px 20px;
+            background: linear-gradient(135deg, #1e1b4b 0%, #311042 100%);
+            border-bottom: 3px solid #f43f5e;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            color: #f43f5e;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: #cbd5e1;
+            max-width: 600px;
+            margin: 0 auto 25px auto;
+        }
+
+        /* Audio Element Controls Styling */
+        .audio-box {
+            background: rgba(255, 255, 255, 0.1);
+            display: inline-flex;
+            align-items: center;
+            padding: 10px 20px;
+            border-radius: 50px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* Grid Container */
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .memory-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        /* Polaroid Memory Cards */
+        .memory-card {
+            background: #ffffff;
+            color: #1e293b;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            transform: rotate(var(--rotation));
+            transition: all 0.3s ease-in-out;
+            cursor: pointer;
+        }
+
+        .memory-card:hover {
+            transform: scale(1.05) rotate(0deg) !important;
+            z-index: 10;
+            box-shadow: 0 15px 35px rgba(244, 63, 94, 0.4);
+        }
+
+        .image-wrapper {
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+            border-radius: 4px;
+            background: #e2e8f0;
+            position: relative;
+        }
+
+        .image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .caption {
+            padding-top: 15px;
+            text-align: center;
+            font-style: italic;
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: #334155;
+        }
+
+        .tag {
+            display: block;
+            text-align: center;
+            font-size: 0.8rem;
+            color: #94a3b8;
+            margin-top: 5px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Fullscreen Lightbox Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(15, 23, 42, 0.95);
+            z-index: 100;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal-content {
+            max-width: 800px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .modal-img {
+            max-width: 100%;
+            max-height: 70vh;
+            border-radius: 8px;
+            box-shadow: 0 0 30px rgba(255,255,255,0.1);
+        }
+
+        .modal-desc {
+            margin-top: 20px;
+            font-size: 1.2rem;
+            color: #f1f5f9;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 25px;
+            right: 35px;
+            font-size: 2.5rem;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        @media(max-width: 600px) {
+            .hero h1 { font-size: 2rem; }
+            .memory-card { transform: none !important; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Nostalgia Unit -->
+    <header class="hero">
+        <h1>The Batch of 2026 Memory Lane</h1>
+        <p>Scan the code. Remember the laughs, the late nights, the final-minute submissions, and everything in between. You will be missed!</p>
+        
+        <div class="audio-box">
+            <!-- Replace source URL with your audio file or a nostalgic instrumental stream -->
+            <audio controls id="bg-music" loop>
+                <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+    </header>
+
+    <!-- Main Content Grid -->
+    <main class="container">
+        <div class="memory-grid" id="grid">
+            <!-- Memory 1 -->
+            <div class="memory-card" style="--rotation: -2deg;" onclick="openLightbox('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800', 'The first day we all walked into campus, completely clueless but full of big dreams.', 'Orientation Day')">
+                <div class="image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800" alt="Orientation">
+                </div>
+                <p class="caption">Where it all started...</p>
+                <span class="tag">Orientation Day</span>
+            </div>
+
+            <!-- Memory 2 -->
+            <div class="memory-card" style="--rotation: 3deg;" onclick="openLightbox('https://images.unsplash.com/photo-1511556532299-8f662fc26c06?w=800', 'Winning the inter-college tech fest after coding for 24 hours straight without sleep!', 'Canteen Coding Sessions')">
+                <div class="image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1511556532299-8f662fc26c06?w=800" alt="Tech Fest">
+                </div>
+                <p class="caption">Unstoppable coding marathons ☕</p>
+                <span class="tag">Canteen Memories</span>
+            </div>
+
+            <!-- Memory 3 -->
+            <div class="memory-card" style="--rotation: -1deg;" onclick="openLightbox('https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?w=800', 'Mass bunking lectures just to catch the morning show of our favorite cinema star!', 'The Great Bunk')">
+                <div class="image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?w=800" alt="Friends laughing">
+                </div>
+                <p class="caption">"Is attendance mandatory today?"</p>
+                <span class="tag">The Last Bench Crew</span>
+            </div>
+        </div>
+    </main>
+
+    <!-- Lightbox Modal Box -->
+    <div class="modal" id="lightbox" onclick="closeLightbox()">
+        <span class="close-btn">&times;</span>
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <img class="modal-img" id="modal-image" src="" alt="Expanded View">
+            <p class="modal-desc" id="modal-caption"></p>
+        </div>
+    </div>
+
+    <script>
+        // Dynamically add minor random angles to cards on desktop to look like messy real-life Polaroids
+        document.querySelectorAll('.memory-card').forEach(card => {
+            if(window.innerWidth > 600) {
+                const randomAngle = (Math.random() * 6 - 3).toFixed(2);
+                card.style.setProperty('--rotation', `${randomAngle}deg`);
+            }
+        });
+
+        // Lightbox Functions
+        function openLightbox(imgSrc, storyText, tag) {
+            document.getElementById('modal-image').src = imgSrc;
+            document.getElementById('modal-caption').innerHTML = `<strong>${tag}</strong> — ${storyText}`;
+            document.getElementById('lightbox').style.display = 'flex';
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
