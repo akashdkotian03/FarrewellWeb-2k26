@@ -15,9 +15,84 @@
         body {
             background: #0f172a;
             color: #f8fafc;
-            padding-bottom: 60px;
+            padding-bottom: 0;
+            overflow-x: hidden;
         }
 
+        /* 1. CINEMATIC AUTO-PLAYING VIDEO INTRO SPLASH SCREEN */
+        #splash-screen {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: #000000;
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            transition: opacity 1s ease-out, visibility 1s ease-out;
+        }
+
+        .intro-video-bg {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            object-fit: cover;
+            z-index: 1;
+        }
+
+        .video-overlay-mask {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.45);
+            z-index: 2;
+        }
+
+        .intro-content {
+            position: relative;
+            z-index: 3;
+            text-align: center;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .intro-content h2 {
+            font-size: 1.4rem;
+            color: #cbd5e1;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+        }
+
+        .intro-content h1 {
+            font-size: 3.2rem;
+            color: #ffffff;
+            margin-bottom: 40px;
+            text-shadow: 0 0 20px rgba(244, 63, 94, 0.6), 0 4px 15px rgba(0,0,0,0.9);
+        }
+
+        .enter-btn {
+            background: #f43f5e;
+            color: white;
+            border: none;
+            padding: 15px 45px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 0 25px rgba(244, 63, 94, 0.6);
+            transition: all 0.3s ease;
+        }
+
+        .enter-btn:hover {
+            transform: scale(1.05);
+            background: #e11d48;
+            box-shadow: 0 0 35px rgba(244, 63, 94, 0.9);
+        }
+
+        /* 2. MAIN INTERFACE STYLING */
         .hero {
             text-align: center;
             padding: 60px 20px;
@@ -25,177 +100,89 @@
             border-bottom: 3px solid #f43f5e;
         }
 
-        .hero h1 {
-            font-size: 2.5rem;
-            color: #f43f5e;
-            margin-bottom: 10px;
-        }
+        .hero h1 { font-size: 2.5rem; color: #f43f5e; margin-bottom: 10px; }
+        .hero p { color: #cbd5e1; margin-bottom: 20px; }
 
-        .hero p {
-            color: #cbd5e1;
-            margin-bottom: 20px;
-        }
-
-        /* Filter Navigation Menu */
         .filter-nav {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            flex-wrap: wrap;
-            margin: 30px auto;
-            padding: 0 20px;
-            max-width: 1000px;
+            display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;
+            margin: 30px auto; padding: 0 20px; max-width: 1000px;
         }
 
         .filter-btn {
-            background: #1e293b;
-            color: #f1f5f9;
-            border: 1px solid #334155;
-            padding: 10px 20px;
-            border-radius: 30px;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
+            background: #1e293b; color: #f1f5f9; border: 1px solid #334155;
+            padding: 10px 20px; border-radius: 30px; cursor: pointer;
+            font-weight: 600; font-size: 0.9rem; transition: all 0.3s ease;
         }
 
         .filter-btn:hover, .filter-btn.active {
-            background: #f43f5e;
-            color: white;
-            border-color: #f43f5e;
+            background: #f43f5e; color: white; border-color: #f43f5e;
             box-shadow: 0 0 15px rgba(244, 63, 94, 0.4);
         }
 
-        /* Grid Framework */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .memory-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        /* Polaroid Memory Cards with Category Filtering */
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .memory-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        
         .memory-card {
-            background: #ffffff;
-            color: #1e293b;
-            border-radius: 8px;
-            padding: 15px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-            transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
-            display: block; /* Shown by default */
+            background: #ffffff; color: #1e293b; border-radius: 8px; padding: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3); transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-
-        /* Hide class used by JavaScript filtering */
-        .memory-card.hidden {
-            display: none !important;
-        }
-
-        .memory-card:hover {
-            transform: scale(1.04) rotate(0deg) !important;
-            z-index: 5;
-            box-shadow: 0 15px 35px rgba(244, 63, 94, 0.3);
-        }
+        .memory-card.hidden { display: none !important; }
 
         .media-wrapper {
-            width: 100%;
-            height: 240px;
-            overflow: hidden;
-            border-radius: 4px;
-            background: #000;
-            position: relative;
+            width: 100%; height: 240px; overflow: hidden; border-radius: 4px;
+            background: #000; position: relative; cursor: pointer;
         }
-
-        .media-wrapper img, .media-wrapper video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        /* Play button overlay indicator for videos */
+        .media-wrapper img, .media-wrapper video { width: 100%; height: 100%; object-fit: cover; }
+        
         .video-badge {
-            position: absolute;
-            top: 10px; right: 10px;
-            background: rgba(244, 63, 94, 0.9);
-            color: white;
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-size: 0.75rem;
-            font-weight: bold;
-            text-transform: uppercase;
+            position: absolute; top: 10px; right: 10px; background: rgba(244, 63, 94, 0.9);
+            color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: bold;
         }
 
-        .caption {
-            padding-top: 12px;
-            text-align: center;
-            font-style: italic;
-            font-weight: 600;
-            color: #334155;
-        }
+        .caption { padding-top: 12px; text-align: center; font-style: italic; font-weight: 600; color: #334155; }
+        .tag { display: block; text-align: center; font-size: 0.8rem; color: #e11d48; font-weight: bold; margin-top: 5px; text-transform: uppercase; }
 
-        .tag {
-            display: block;
-            text-align: center;
-            font-size: 0.8rem;
-            color: #e11d48;
-            font-weight: bold;
-            margin-top: 5px;
-            text-transform: uppercase;
-        }
-
-        /* Modal Lightbox Popup */
+        /* Lightbox Modals */
         .modal {
-            display: none;
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(15, 23, 42, 0.98);
-            z-index: 100;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(15, 23, 42, 0.98); z-index: 10000; justify-content: center; align-items: center; padding: 20px;
         }
+        .modal-content { max-width: 800px; width: 100%; text-align: center; }
+        .modal-media-target { max-width: 100%; max-height: 70vh; border-radius: 8px; }
+        .modal-desc { margin-top: 20px; font-size: 1.2rem; color: #f1f5f9; }
+        .close-btn { position: absolute; top: 25px; right: 35px; font-size: 2.5rem; color: #fff; cursor: pointer; }
 
-        .modal-content {
-            max-width: 800px;
-            width: 100%;
-            text-align: center;
-        }
-
-        .modal-media-target {
-            max-width: 100%;
-            max-height: 70vh;
-            border-radius: 8px;
-            box-shadow: 0 0 30px rgba(255,255,255,0.1);
-        }
-
-        .modal-desc {
-            margin-top: 20px;
-            font-size: 1.2rem;
-            color: #f1f5f9;
-        }
-
-        .close-btn {
-            position: absolute;
-            top: 25px;
-            right: 35px;
-            font-size: 2.5rem;
-            color: #fff;
-            cursor: pointer;
-        }
+        /* Footer Sign Off */
+        .signing-off-footer { margin-top: 80px; padding: 60px 20px; background: linear-gradient(180deg, #0f172a 0%, #05070c 100%); border-top: 2px dashed rgba(244, 63, 94, 0.3); text-align: center; }
+        .footer-content { max-width: 800px; margin: 0 auto; }
+        .batch-years { font-size: 1.5rem; color: #f43f5e; font-weight: bold; letter-spacing: 6px; margin-bottom: 15px; }
+        .quote-text { font-size: 1.4rem; font-style: italic; color: #cbd5e1; line-height: 1.8; margin-bottom: 30px; }
+        .sign-off-tagline { font-size: 1.1rem; color: #94a3b8; letter-spacing: 2px; text-transform: uppercase; }
     </style>
 </head>
 <body>
 
+    <audio id="bg-music" loop>
+        <source src="background-music.mp3" type="audio/mpeg">
+    </audio>
+
+    <div id="splash-screen">
+        <video class="intro-video-bg" id="intro-video" autoplay loop muted playsinline>
+            <source src="https://res.cloudinary.com/dk9yhsklq/video/upload/intro.mp4" type="video/mp4">
+        </video>
+        <div class="video-overlay-mask"></div>
+        <div class="intro-content">
+            <h2>Time Capsule Loaded</h2>
+            <h1>Batch of 2023 - 2026</h1>
+            <button class="enter-btn" onclick="startExperience()">Skip Intro & Enter</button>
+        </div>
+    </div>
+
     <header class="hero">
-        <h1>The College Time Capsule</h1>
-        <p>Filter by your batch, wing, or department to re-live the gold old days.</p>
+        <h1>The Campus Archives</h1>
+        <p>Filter by your batch, wing, or department to re-live the good old days.</p>
     </header>
 
-    <!-- Filter Control Menu -->
     <nav class="filter-nav">
         <button class="filter-btn active" onclick="filterCategory('all')">All Memories</button>
         <button class="filter-btn" onclick="filterCategory('bca')">BCA</button>
@@ -207,82 +194,114 @@
         <button class="filter-btn" onclick="filterCategory('cultural')">Cultural</button>
     </nav>
 
-    <!-- Main Grid System -->
     <main class="container">
         <div class="memory-grid" id="grid">
             
-            <!-- BCA IMAGE MEMORY -->
             <div class="memory-card" data-category="bca">
-                <div class="media-wrapper" onclick="openImageModal('https://images.unsplash.com/photo-1515879218367-8466d910aaa4?w=800', 'Lab 3 assignments and endless debugging sessions!', 'BCA')">
-                    <img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?w=800" alt="Coding">
+                <div class="media-wrapper" onclick="openVideoModal('https://res.cloudinary.com/dk9yhsklq/video/upload/bca-video.mp4', 'Endless coding assignments and late-night compilation errors.', 'BCA Computer Lab')">
+                    <span class="video-badge">▶ Video</span>
+                    <video src="https://res.cloudinary.com/dk9yhsklq/video/upload/bca-video.mp4" muted loop autoplay></video>
                 </div>
                 <p class="caption">Errors: 99, Sleep: 0 💻</p>
                 <span class="tag">BCA</span>
             </div>
 
-            <!-- NSS VIDEO MEMORY -->
-            <div class="memory-card" data-category="nss">
-                <div class="media-wrapper" onclick="openVideoModal('https://www.w3schools.com/html/mov_bbb.mp4', 'Building tracks and singing around the campfire at the annual camp!', 'NSS Special Camp')">
+            <div class="memory-card" data-category="ba">
+                <div class="media-wrapper" onclick="openVideoModal('https://res.cloudinary.com/dk9yhsklq/video/upload/ba-video.mp4', 'Deep literary dialogues and expressive classroom discussions.', 'BA Department')">
                     <span class="video-badge">▶ Video</span>
-                    <video src="https://www.w3schools.com/html/mov_bbb.mp4" muted loop autoplay></video>
+                    <video src="https://res.cloudinary.com/dk9yhsklq/video/upload/ba-video.mp4" muted loop autoplay></video>
                 </div>
-                <p class="caption">Not me, but you. Campfire nights! 🔥</p>
-                <span class="tag">NSS Camp</span>
+                <p class="caption">Expressions & Ideas 🗣️</p>
+                <span class="tag">BA</span>
             </div>
 
-            <!-- BCOM IMAGE MEMORY -->
             <div class="memory-card" data-category="bcom">
-                <div class="media-wrapper" onclick="openImageModal('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800', 'Balancing asset sheets while laughing our heads off during accounting classes.', 'B.Com Batch')">
-                    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800" alt="Accounting">
+                <div class="media-wrapper" onclick="openVideoModal('https://res.cloudinary.com/dk9yhsklq/video/upload/bcom-video.mp4', 'Cracking ledger rows and laughing through accounting classes.', 'B.Com Batch')">
+                    <span class="video-badge">▶ Video</span>
+                    <video src="https://res.cloudinary.com/dk9yhsklq/video/upload/bcom-video.mp4" muted loop autoplay></video>
                 </div>
-                <p class="caption">Cracking the Balance Sheet 📈</p>
+                <p class="caption">Balancing Asset Sheets 📈</p>
                 <span class="tag">B.Com</span>
             </div>
 
-            <!-- SPORTS IMAGE MEMORY -->
-            <div class="memory-card" data-category="sports">
-                <div class="media-wrapper" onclick="openImageModal('https://images.unsplash.com/photo-1517649763962-0c623066013b?w=800', 'Lifting the championship trophy at the university athletic meet!', 'Sports Meet')">
-                    <img src="https://images.unsplash.com/photo-1517649763962-0c623066013b?w=800" alt="Sports">
+            <div class="memory-card" data-category="nss">
+                <div class="media-wrapper" onclick="openVideoModal('https://res.cloudinary.com/dk9yhsklq/video/upload/nss-video.mp4', 'Campfire sing-alongs and community work under the stars.', 'NSS Special Camp')">
+                    <span class="video-badge">▶ Video</span>
+                    <video src="https://res.cloudinary.com/dk9yhsklq/video/upload/nss-video.mp4" muted loop autoplay></video>
                 </div>
-                <p class="caption">Champions of the field! 🏆</p>
-                <span class="tag">Sports</span>
+                <p class="caption">Not me, but you. 🔥</p>
+                <span class="tag">NSS Unit</span>
             </div>
 
-            <!-- CULTURAL VIDEO MEMORY -->
-            <div class="memory-card" data-category="cultural">
-                <div class="media-wrapper" onclick="openVideoModal('https://www.w3schools.com/html/movie.mp4', 'The energetic Kannada medley dance that took down the house at college day fest!', 'Cultural Team')">
+            <div class="memory-card" data-category="ncc">
+                <div class="media-wrapper" onclick="openVideoModal('https://res.cloudinary.com/dk9yhsklq/video/upload/ncc-video.mp4', 'Early morning parades, drilling coordination, and unity.', 'NCC Cadet Corps')">
                     <span class="video-badge">▶ Video</span>
-                    <video src="https://www.w3schools.com/html/movie.mp4" muted loop autoplay></video>
+                    <video src="https://res.cloudinary.com/dk9yhsklq/video/upload/ncc-video.mp4" muted loop autoplay></video>
                 </div>
-                <p class="caption">Backstage madness before the performance 🕺</p>
-                <span class="tag">Cultural</span>
+                <p class="caption">Unity and Discipline 🫡</p>
+                <span class="tag">NCC Cadets</span>
+            </div>
+
+            <div class="memory-card" data-category="sports">
+                <div class="media-wrapper" onclick="openVideoModal('https://res.cloudinary.com/dk9yhsklq/video/upload/sports-video.mp4', 'Championship wins and true sweat on the athletic grounds.', 'Sports Meet')">
+                    <span class="video-badge">▶ Video</span>
+                    <video src="https://res.cloudinary.com/dk9yhsklq/video/upload/sports-video.mp4" muted loop autoplay></video>
+                </div>
+                <p class="caption">Champions of the field! 🏆</p>
+                <span class="tag">Sports Team</span>
+            </div>
+
+            <div class="memory-card" data-category="cultural">
+                <div class="media-wrapper" onclick="openVideoModal('https://res.cloudinary.com/dk9yhsklq/video/upload/cultural-video.mp4', 'The high-energy backstage chaos and incredible performances.', 'Cultural Gala')">
+                    <span class="video-badge">▶ Video</span>
+                    <video src="https://res.cloudinary.com/dk9yhsklq/video/upload/cultural-video.mp4" muted loop autoplay></video>
+                </div>
+                <p class="caption">Lights, Camera, Drama 🕺</p>
+                <span class="tag">Cultural Wing</span>
             </div>
 
         </div>
     </main>
 
-    <!-- Unified Modal View -->
+    <footer class="signing-off-footer">
+        <div class="footer-content">
+            <div class="batch-years">BATCH OF 2023 — 2026</div>
+            <p class="quote-text">
+                "We arrived as strangers, holding scripts we didn't know how to read. We leave as family, leaving behind echoes in the classrooms, laughter in the canteens, and footprints on the campus fields. Thank you for being part of our beautiful design."
+            </p>
+            <div class="sign-off-tagline">
+                Signing Off with Love, Your Juniors. ❤️
+            </div>
+        </div>
+    </footer>
+
     <div class="modal" id="lightbox" onclick="closeModal()">
         <span class="close-btn">&times;</span>
-        <div class="modal-content" onclick="event.stopPropagation()" id="modal-body">
-            <!-- Content will be injected instantly via JS depending on format -->
-        </div>
+        <div class="modal-content" onclick="event.stopPropagation()" id="modal-body"></div>
     </div>
 
     <script>
-        // Apply random slight rotation angles to elements to give an authentic Polaroid look
+        function startExperience() {
+            const introVideo = document.getElementById('intro-video');
+            introVideo.pause();
+
+            const music = document.getElementById('bg-music');
+            music.play().catch(error => console.log("Audio kick-off handled: ", error));
+
+            const splash = document.getElementById('splash-screen');
+            splash.style.opacity = '0';
+            splash.style.visibility = 'hidden';
+        }
+
         document.querySelectorAll('.memory-card').forEach(card => {
             const randomAngle = (Math.random() * 4 - 2).toFixed(2);
             card.style.transform = `rotate(${randomAngle}deg)`;
         });
 
-        // Main Filtering Logic
         function filterCategory(category) {
-            // Adjust active button styling
             document.querySelectorAll('.filter-nav button').forEach(btn => btn.classList.remove('active'));
             event.target.classList.add('active');
 
-            // Show/Hide target elements
             document.querySelectorAll('.memory-card').forEach(card => {
                 const cardCategory = card.getAttribute('data-category');
                 if (category === 'all' || cardCategory === category) {
@@ -293,20 +312,8 @@
             });
         }
 
-        // Open image within Lightbox
-        function openImageModal(src, text, tag) {
-            const modalBody = document.getElementById('modal-body');
-            modalBody.innerHTML = `
-                <img class="modal-media-target" src="${src}" alt="Image">
-                <p class="modal-desc"><strong>${tag}</strong> — ${text}</p>
-            `;
-            document.getElementById('lightbox').style.display = 'flex';
-        }
-
-        // Open video player within Lightbox
         function openVideoModal(src, text, tag) {
-            const modalBody = document.getElementById('modal-body');
-            modalBody.innerHTML = `
+            document.getElementById('modal-body').innerHTML = `
                 <video class="modal-media-target" src="${src}" controls autoplay></video>
                 <p class="modal-desc"><strong>${tag}</strong> — ${text}</p>
             `;
@@ -314,7 +321,6 @@
         }
 
         function closeModal() {
-            // Clear content to force active video streams to stop playing audio in background
             document.getElementById('modal-body').innerHTML = "";
             document.getElementById('lightbox').style.display = 'none';
         }
