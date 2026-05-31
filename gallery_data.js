@@ -38,5 +38,22 @@ const MemoryDatabase = {
             "src": "https://res.cloudinary.com/dk9yhsklq/image/upload/v1780158598/gallery/BCA/Nishan.jpg",
             "title": "Nishan"
         }
+    ],
+    "sports": [
+        {
+            "type": "image",
+            "src": "https://res.cloudinary.com/dk9yhsklq/image/upload/v1780196548/gallery/sports/frnds.jpg",
+            "title": "Frnds"
+        },
+        {
+            "type": "image",
+            "src": "https://res.cloudinary.com/dk9yhsklq/image/upload/v1780196549/gallery/sports/Prajwal.jpg",
+            "title": "Prajwal"
+        },
+        {
+            "type": "image",
+            "src": "https://res.cloudinary.com/dk9yhsklq/image/upload/v1780196547/gallery/sports/Pratham.jpg",
+            "title": "Pratham"
+        }
     ]
 };
