@@ -396,21 +396,91 @@ const MemoryDatabase = {
             "title": "Memory 1"
         }
     ],
-    "sports": [
+    "cultural_fests": [
         {
             "type": "image",
-            "src": "https://res.cloudinary.com/dk9yhsklq/image/upload/v1780196548/gallery/sports/frnds.jpg",
-            "title": "Frnds"
+            "src": "https://res.cloudinary.com/dk9yhsklq/image/upload/v1780209273/gallery/CULTURAL_FESTS/IMG_20240828_175841.jpg",
+            "title": "Img 20240828 175841"
         },
         {
             "type": "image",
-            "src": "https://res.cloudinary.com/dk9yhsklq/image/upload/v1780196549/gallery/sports/Prajwal.jpg",
-            "title": "Prajwal"
+            "src": "https://res.cloudinary.com/dk9yhsklq/image/upload/v1780209198/gallery/CULTURAL_FESTS/IMG-20241201-WA0039.jpg",
+            "title": "Img 20241201 Wa0039"
         },
         {
             "type": "image",
-            "src": "https://res.cloudinary.com/dk9yhsklq/image/upload/v1780196547/gallery/sports/Pratham.jpg",
-            "title": "Pratham"
+            "src": "https://res.cloudinary.com/dk9yhsklq/image/upload/v1780209234/gallery/CULTURAL_FESTS/IMG-20241201-WA0065.jpg",
+            "title": "Img 20241201 Wa0065"
+        },
+        {
+            "type": "image",
+            "src": "https://res.cloudinary.com/dk9yhsklq/image/upload/v1780209262/gallery/CULTURAL_FESTS/IMG-20241201-WA0078.jpg",
+            "title": "Img 20241201 Wa0078"
+        },
+        {
+            "type": "image",
+            "src": "https://res.cloudinary.com/dk9yhsklq/image/upload/v1780209218/gallery/CULTURAL_FESTS/IMG-20241201-WA0084.jpg",
+            "title": "Img 20241201 Wa0084"
+        },
+        {
+            "type": "image",
+            "src": "https://res.cloudinary.com/dk9yhsklq/image/upload/v1780209201/gallery/CULTURAL_FESTS/IMG-20250329-WA0037.jpg",
+            "title": "Img 20250329 Wa0037"
+        },
+        {
+            "type": "image",
+            "src": "https://res.cloudinary.com/dk9yhsklq/image/upload/v1780209294/gallery/CULTURAL_FESTS/IMG-20260227-WA0064.jpg",
+            "title": "Img 20260227 Wa0064"
+        },
+        {
+            "type": "image",
+            "src": "https://res.cloudinary.com/dk9yhsklq/image/upload/v1780209206/gallery/CULTURAL_FESTS/IMG-20260227-WA0072.jpg",
+            "title": "Img 20260227 Wa0072"
+        },
+        {
+            "type": "image",
+            "src": "https://res.cloudinary.com/dk9yhsklq/image/upload/v1780209253/gallery/CULTURAL_FESTS/IMG-20260227-WA0082.jpg",
+            "title": "Img 20260227 Wa0082"
+        },
+        {
+            "type": "image",
+            "src": "https://res.cloudinary.com/dk9yhsklq/image/upload/v1780209196/gallery/CULTURAL_FESTS/IMG-20260228-WA0018.jpg",
+            "title": "Img 20260228 Wa0018"
+        },
+        {
+            "type": "image",
+            "src": "https://res.cloudinary.com/dk9yhsklq/image/upload/v1780209187/gallery/CULTURAL_FESTS/IMG-20260304-WA0010.jpg",
+            "title": "Img 20260304 Wa0010"
+        },
+        {
+            "type": "image",
+            "src": "https://res.cloudinary.com/dk9yhsklq/image/upload/v1780209217/gallery/CULTURAL_FESTS/IMG-20260304-WA0014.jpg",
+            "title": "Img 20260304 Wa0014"
+        },
+        {
+            "type": "image",
+            "src": "https://res.cloudinary.com/dk9yhsklq/image/upload/v1780209211/gallery/CULTURAL_FESTS/IMG-20260304-WA0015.jpg",
+            "title": "Img 20260304 Wa0015"
+        },
+        {
+            "type": "image",
+            "src": "https://res.cloudinary.com/dk9yhsklq/image/upload/v1780209194/gallery/CULTURAL_FESTS/IMG-20260304-WA0016.jpg",
+            "title": "Img 20260304 Wa0016"
+        },
+        {
+            "type": "image",
+            "src": "https://res.cloudinary.com/dk9yhsklq/image/upload/v1780209186/gallery/CULTURAL_FESTS/IMG-20260304-WA0058.jpg",
+            "title": "Img 20260304 Wa0058"
+        },
+        {
+            "type": "video",
+            "src": "https://res.cloudinary.com/dk9yhsklq/video/upload/v1780209265/gallery/CULTURAL_FESTS/VID-20251111-WA0013.mp4",
+            "title": "Vid 20251111 Wa0013"
+        },
+        {
+            "type": "video",
+            "src": "https://res.cloudinary.com/dk9yhsklq/video/upload/v1780209270/gallery/CULTURAL_FESTS/VID-20251112-WA0016.mp4",
+            "title": "Vid 20251112 Wa0016"
         }
     ]
 };
