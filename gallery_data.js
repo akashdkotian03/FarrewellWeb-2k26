@@ -392,8 +392,173 @@ const MemoryDatabase = {
     "bcom": [
         {
             "type": "image",
-            "src": "https://res.cloudinary.com/dk9yhsklq/image/upload/v1780207659/gallery/bcom/Memory_1.jpg",
+            "src": "https://res.cloudinary.com/dk9yhsklq/image/upload/v1780246973/gallery/bcom/Memory_10.jpg",
+            "title": "Memory 10"
+        },
+        {
+            "type": "image",
+            "src": "https://res.cloudinary.com/dk9yhsklq/image/upload/v1780246935/gallery/bcom/Memory_11.jpg",
+            "title": "Memory 11"
+        },
+        {
+            "type": "image",
+            "src": "https://res.cloudinary.com/dk9yhsklq/image/upload/v1780246925/gallery/bcom/Memory_12.jpg",
+            "title": "Memory 12"
+        },
+        {
+            "type": "image",
+            "src": "https://res.cloudinary.com/dk9yhsklq/image/upload/v1780246936/gallery/bcom/Memory_13.jpg",
+            "title": "Memory 13"
+        },
+        {
+            "type": "image",
+            "src": "https://res.cloudinary.com/dk9yhsklq/image/upload/v1780246945/gallery/bcom/Memory_15.jpg",
+            "title": "Memory 15"
+        },
+        {
+            "type": "image",
+            "src": "https://res.cloudinary.com/dk9yhsklq/image/upload/v1780246993/gallery/bcom/Memory_16.jpg",
+            "title": "Memory 16"
+        },
+        {
+            "type": "image",
+            "src": "https://res.cloudinary.com/dk9yhsklq/image/upload/v1780246957/gallery/bcom/Memory_17.jpg",
+            "title": "Memory 17"
+        },
+        {
+            "type": "image",
+            "src": "https://res.cloudinary.com/dk9yhsklq/image/upload/v1780246977/gallery/bcom/Memory_18.jpg",
+            "title": "Memory 18"
+        },
+        {
+            "type": "image",
+            "src": "https://res.cloudinary.com/dk9yhsklq/image/upload/v1780246984/gallery/bcom/Memory_19.jpg",
+            "title": "Memory 19"
+        },
+        {
+            "type": "image",
+            "src": "https://res.cloudinary.com/dk9yhsklq/image/upload/v1780246873/gallery/bcom/Memory_2.jpg",
+            "title": "Memory 2"
+        },
+        {
+            "type": "image",
+            "src": "https://res.cloudinary.com/dk9yhsklq/image/upload/v1780247000/gallery/bcom/Memory_20.jpg",
+            "title": "Memory 20"
+        },
+        {
+            "type": "image",
+            "src": "https://res.cloudinary.com/dk9yhsklq/image/upload/v1780247008/gallery/bcom/Memory_21.jpg",
+            "title": "Memory 21"
+        },
+        {
+            "type": "image",
+            "src": "https://res.cloudinary.com/dk9yhsklq/image/upload/v1780247001/gallery/bcom/Memory_22.jpg",
+            "title": "Memory 22"
+        },
+        {
+            "type": "image",
+            "src": "https://res.cloudinary.com/dk9yhsklq/image/upload/v1780247013/gallery/bcom/Memory_23.jpg",
+            "title": "Memory 23"
+        },
+        {
+            "type": "image",
+            "src": "https://res.cloudinary.com/dk9yhsklq/image/upload/v1780247022/gallery/bcom/Memory_24.jpg",
+            "title": "Memory 24"
+        },
+        {
+            "type": "image",
+            "src": "https://res.cloudinary.com/dk9yhsklq/image/upload/v1780247005/gallery/bcom/Memory_25.jpg",
+            "title": "Memory 25"
+        },
+        {
+            "type": "image",
+            "src": "https://res.cloudinary.com/dk9yhsklq/image/upload/v1780247028/gallery/bcom/Memory_26.jpg",
+            "title": "Memory 26"
+        },
+        {
+            "type": "image",
+            "src": "https://res.cloudinary.com/dk9yhsklq/image/upload/v1780247049/gallery/bcom/Memory_27.jpg",
+            "title": "Memory 27"
+        },
+        {
+            "type": "image",
+            "src": "https://res.cloudinary.com/dk9yhsklq/image/upload/v1780247019/gallery/bcom/Memory_28.jpg",
+            "title": "Memory 28"
+        },
+        {
+            "type": "image",
+            "src": "https://res.cloudinary.com/dk9yhsklq/image/upload/v1780247048/gallery/bcom/Memory_29.jpg",
+            "title": "Memory 29"
+        },
+        {
+            "type": "image",
+            "src": "https://res.cloudinary.com/dk9yhsklq/image/upload/v1780246874/gallery/bcom/Memory_3.jpg",
+            "title": "Memory 3"
+        },
+        {
+            "type": "image",
+            "src": "https://res.cloudinary.com/dk9yhsklq/image/upload/v1780247090/gallery/bcom/Memory_31.jpg",
+            "title": "Memory 31"
+        },
+        {
+            "type": "image",
+            "src": "https://res.cloudinary.com/dk9yhsklq/image/upload/v1780246877/gallery/bcom/Memory_4.jpg",
+            "title": "Memory 4"
+        },
+        {
+            "type": "image",
+            "src": "https://res.cloudinary.com/dk9yhsklq/image/upload/v1780246925/gallery/bcom/Memory_6.jpg",
+            "title": "Memory 6"
+        },
+        {
+            "type": "image",
+            "src": "https://res.cloudinary.com/dk9yhsklq/image/upload/v1780246873/gallery/bcom/Memory_7.jpg",
+            "title": "Memory 7"
+        },
+        {
+            "type": "image",
+            "src": "https://res.cloudinary.com/dk9yhsklq/image/upload/v1780246886/gallery/bcom/Memory_8.jpg",
+            "title": "Memory 8"
+        },
+        {
+            "type": "video",
+            "src": "https://res.cloudinary.com/dk9yhsklq/video/upload/v1780247683/gallery/bcom/Memory_1.mp4",
             "title": "Memory 1"
+        },
+        {
+            "type": "video",
+            "src": "https://res.cloudinary.com/dk9yhsklq/video/upload/v1780247065/gallery/bcom/Memory_14.mp4",
+            "title": "Memory 14"
+        },
+        {
+            "type": "video",
+            "src": "https://res.cloudinary.com/dk9yhsklq/video/upload/v1780247484/gallery/bcom/Memory_30.mp4",
+            "title": "Memory 30"
+        },
+        {
+            "type": "video",
+            "src": "https://res.cloudinary.com/dk9yhsklq/video/upload/v1780247736/gallery/bcom/Memory_32.mp4",
+            "title": "Memory 32"
+        },
+        {
+            "type": "video",
+            "src": "https://res.cloudinary.com/dk9yhsklq/video/upload/v1780247680/gallery/bcom/Memory_33.mp4",
+            "title": "Memory 33"
+        },
+        {
+            "type": "video",
+            "src": "https://res.cloudinary.com/dk9yhsklq/video/upload/v1780246996/gallery/bcom/Memory_5.mp4",
+            "title": "Memory 5"
+        },
+        {
+            "type": "video",
+            "src": "https://res.cloudinary.com/dk9yhsklq/video/upload/v1780246991/gallery/bcom/Memory_8.mp4",
+            "title": "Memory 8"
+        },
+        {
+            "type": "video",
+            "src": "https://res.cloudinary.com/dk9yhsklq/video/upload/v1780246910/gallery/bcom/Memory_9.mp4",
+            "title": "Memory 9"
         }
     ],
     "cultural_fests": [
