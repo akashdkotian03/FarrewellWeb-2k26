@@ -372,7 +372,7 @@ const MemoryDatabase = {
             "title": "Whatsapp Video 2026 05 28 At 3.34.07 Pm"
         }
     ],
-    "BCA": [
+    "bca": [
         {
             "type": "image",
             "src": "https://res.cloudinary.com/dk9yhsklq/image/upload/v1780158599/gallery/BCA/Akash.jpg",
@@ -387,6 +387,13 @@ const MemoryDatabase = {
             "type": "image",
             "src": "https://res.cloudinary.com/dk9yhsklq/image/upload/v1780158598/gallery/BCA/Nishan.jpg",
             "title": "Nishan"
+        }
+    ],
+    "bcom": [
+        {
+            "type": "image",
+            "src": "https://res.cloudinary.com/dk9yhsklq/image/upload/v1780207659/gallery/bcom/Memory_1.jpg",
+            "title": "Memory 1"
         }
     ],
     "sports": [
