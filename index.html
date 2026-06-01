@@ -238,7 +238,7 @@
 
         /* ROOM GALLERIES CONTAINER */
         .gallery-holder-view {
-            display: none; /* Stays hidden until dashboard card link triggers open loop */
+            display: none; 
         }
 
         .gallery-control-header {
@@ -408,7 +408,8 @@
 
     <div id="splash-screen">
         <video class="intro-video-bg" id="intro-video" autoplay loop muted playsinline>
-            <source src="https://res.cloudinary.com/dk9yhsklq/video/upload/v1780124951/yvu02prnkvyi9ffac6cf.mp4" type="video/mp4">
+            <!-- 🎬 SOURCE UPDATED WITH OPTIMIZED CLOUDINARY RESOURCE LINK -->
+            <source src="https://res.cloudinary.com/dk9yhsklq/video/upload/f_auto,q_auto/v1780297352/intro2.mp4" type="video/mp4">
         </video>
         <div class="video-overlay-mask"></div>
         <div class="intro-content">
@@ -462,7 +463,7 @@
     <script src="gallery_data.js"></script>
 
     <script>
-        // STATIC CONTENT CONFIGURATION FOR LARGE HOME BUTTON CARDS
+        // STATIC CONTENT CONFIGURATION FOR LARGE HOME BUTTON CARDS (UPPERCASE MAPS)
         const CardDesignAssets = {
             'BA': {
                 image: 'https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?q=80&w=600',
@@ -479,6 +480,10 @@
             'CULTURAL_FESTS': {
                 image: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=600',
                 quote: '"Where the music echoed, the stage came alive, and we shone brighter than the lights."'
+            },
+            'SPORTS': {
+                image: 'https://images.unsplash.com/photo-1461896836934-ffe607ba8211?q=80&w=600',
+                quote: '"Sweat, teamwork, and broken records. We ran our hearts out on that campus field."'
             }
         };
 
@@ -500,9 +505,10 @@
                 const dataPool = MemoryDatabase[category];
                 if (dataPool.length === 0) return; // Skip folder if empty
 
+                // CRITICAL FIX: Force key to uppercase to perfectly match CardDesignAssets keys
                 const cleanKey = category.toUpperCase();
                 
-                // Pull localized layout configs or fall back to defaults if new folder added
+                // Pull localized layout configs or fall back to defaults if a new folder is found
                 const coverImage = CardDesignAssets[cleanKey]?.image || (dataPool[0] ? dataPool[0].src : '');
                 const deepQuote = CardDesignAssets[cleanKey]?.quote || '"Every shared smile, a classic chapter preserved forever inside our college canvas."';
                 const displayName = category.replace('_', ' ').replace('-', ' ');
