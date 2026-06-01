@@ -407,9 +407,7 @@
     </audio>
 
     <div id="splash-screen">
-        <!-- 🔊 Muted attribute removed so audio plays -->
-        <video class="intro-video-bg" id="intro-video" autoplay loop playsinline>
-            <!-- 🎬 SOURCE UPDATED WITH OPTIMIZED CLOUDINARY RESOURCE LINK -->
+        <video class="intro-video-bg" id="intro-video" autoplay loop muted playsinline>
             <source src="https://res.cloudinary.com/dk9yhsklq/video/upload/f_auto,q_auto/v1780297352/intro2.mp4" type="video/mp4">
         </video>
         <div class="video-overlay-mask"></div>
@@ -506,7 +504,7 @@
                 const dataPool = MemoryDatabase[category];
                 if (dataPool.length === 0) return; // Skip folder if empty
 
-                // CRITICAL FIX: Force key to uppercase to perfectly match CardDesignAssets keys
+                // Force key to uppercase to perfectly match CardDesignAssets keys
                 const cleanKey = category.toUpperCase();
                 
                 // Pull localized layout configs or fall back to defaults if a new folder is found
@@ -641,6 +639,15 @@
 
         resizeCanvas();
         handleParticles();
+
+        /* 🔊 AUDIO UNMUTE EVENT LISTENER SOLUTION */
+        // Unmutes the background intro video stream instantly upon the user's very first gesture
+        document.addEventListener('click', () => {
+            const introVid = document.getElementById('intro-video');
+            if (introVid) {
+                introVid.muted = false;
+            }
+        }, { once: true }); // '{ once: true }' ensures this listener cleans itself up after firing once
 
         function startExperience() {
             document.getElementById('intro-video').pause();
