@@ -53,70 +53,50 @@
             top: 0; left: 0; width: 100%; height: 100%;
             object-fit: cover;
             z-index: 1;
-            opacity: 0.88; 
+            opacity: 1.0;
         }
 
-        .video-overlay-mask {
+        /* 🎬 PLAY BUTTON OVERLAY: Grants permission to play audio flawlessly */
+        #play-overlay {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(135deg, rgba(26, 11, 17, 0.42), rgba(244, 63, 94, 0.12));
-            backdrop-filter: blur(2px);
-            z-index: 2;
-        }
-
-        .intro-content {
-            position: relative;
-            z-index: 3;
-            text-align: center;
-            padding: 20px 35px;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 10;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
-            background: rgba(26, 11, 17, 0.25);
-            border: 1px solid rgba(255, 215, 0, 0.1);
-            border-radius: 12px;
-            backdrop-filter: blur(6px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
-            max-width: 85%;
-        }
-
-        .intro-content h2 {
-            font-size: 1.05rem;
-            color: rgba(243, 229, 171, 0.75);
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            margin-bottom: 4px;
-            animation: celebratoryPulse 2.5s infinite alternate;
-        }
-
-        .intro-content h1 {
-            font-size: 2.2rem;
-            color: rgba(255, 255, 255, 0.88);
-            margin-bottom: 18px;
-            text-shadow: 0 0 20px rgba(255, 215, 0, 0.35);
-        }
-
-        .enter-btn {
-            background: rgba(255, 215, 0, 0.05);
-            color: rgba(255, 215, 0, 0.8);
-            border: 1px solid rgba(255, 215, 0, 0.4);
-            padding: 7px 20px;
-            font-size: 0.88rem;
-            font-weight: 600;
-            border-radius: 30px;
             cursor: pointer;
-            transition: all 0.25s ease;
-            backdrop-filter: blur(4px);
-            letter-spacing: 0.3px;
+            transition: opacity 0.5s ease;
         }
 
-        .enter-btn:hover {
-            transform: scale(1.02);
-            background: var(--gold-bright);
-            color: var(--bg-royal);
-            border-color: var(--gold-bright);
-            box-shadow: 0 0 25px rgba(255, 215, 0, 0.45);
+        .play-button-icon {
+            width: 90px;
+            height: 90px;
+            background: rgba(255, 215, 0, 0.15);
+            border: 2px solid var(--gold-bright);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.4);
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+
+        .play-button-icon::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 15px 0 15px 26px;
+            border-color: transparent transparent transparent var(--gold-bright);
+            margin-left: 6px;
+        }
+
+        #play-overlay:hover .play-button-icon {
+            transform: scale(1.1);
+            background: rgba(255, 215, 0, 0.3);
+            box-shadow: 0 0 45px rgba(255, 215, 0, 0.6);
         }
 
         /* HERO AREA */
@@ -391,11 +371,6 @@
         .batch-years { font-size: 1.5rem; color: var(--gold-bright); font-weight: bold; letter-spacing: 6px; margin-bottom: 15px; }
         .quote-text { font-size: 1.4rem; font-style: italic; color: #cbd5e1; line-height: 1.8; margin-bottom: 30px; }
         .sign-off-tagline { font-size: 1.1rem; color: var(--rose-celebration); letter-spacing: 2px; text-transform: uppercase; }
-
-        @keyframes celebratoryPulse {
-            0% { text-shadow: 0 0 3px rgba(243, 229, 171, 0.4); }
-            100% { text-shadow: 0 0 15px rgba(255, 215, 0, 0.4); }
-        }
     </style>
 </head>
 <body>
@@ -407,14 +382,12 @@
     </audio>
 
     <div id="splash-screen">
-        <video class="intro-video-bg" id="intro-video" autoplay loop muted playsinline>
+        <video class="intro-video-bg" id="intro-video" playsinline>
             <source src="https://res.cloudinary.com/dk9yhsklq/video/upload/f_auto,q_auto/v1780297352/intro2.mp4" type="video/mp4">
         </video>
-        <div class="video-overlay-mask"></div>
-        <div class="intro-content">
-            <h2>Time Capsule Loaded</h2>
-            <h1>Batch of 2023 - 2026</h1>
-            <button class="enter-btn" onclick="startExperience()">Skip Intro & Enter</button>
+        
+        <div id="play-overlay" onclick="playIntroWithAudio()">
+            <div class="play-button-icon"></div>
         </div>
     </div>
 
@@ -462,7 +435,6 @@
     <script src="gallery_data.js"></script>
 
     <script>
-        // STATIC CONTENT CONFIGURATION FOR LARGE HOME BUTTON CARDS (UPPERCASE MAPS)
         const CardDesignAssets = {
             'BA': {
                 image: 'https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?q=80&w=600',
@@ -486,7 +458,6 @@
             }
         };
 
-        // CORE DYNAMIC DASHBOARD GENERATOR
         function generateMemoryDashboard() {
             if (typeof MemoryDatabase === 'undefined') {
                 document.getElementById('large-button-grid').innerHTML = `
@@ -498,21 +469,17 @@
             }
 
             const buttonGrid = document.getElementById('large-button-grid');
-            buttonGrid.innerHTML = ""; // Clear placeholders
+            buttonGrid.innerHTML = ""; 
 
             Object.keys(MemoryDatabase).forEach(category => {
                 const dataPool = MemoryDatabase[category];
-                if (dataPool.length === 0) return; // Skip folder if empty
+                if (dataPool.length === 0) return; 
 
-                // Force key to uppercase to perfectly match CardDesignAssets keys
                 const cleanKey = category.toUpperCase();
-                
-                // Pull localized layout configs or fall back to defaults if a new folder is found
                 const coverImage = CardDesignAssets[cleanKey]?.image || (dataPool[0] ? dataPool[0].src : '');
                 const deepQuote = CardDesignAssets[cleanKey]?.quote || '"Every shared smile, a classic chapter preserved forever inside our college canvas."';
                 const displayName = category.replace('_', ' ').replace('-', ' ');
 
-                // Build Large Dynamic Action Button Card
                 const cardButton = document.createElement('div');
                 cardButton.className = `large-memory-btn`;
                 cardButton.style.backgroundImage = `url('${coverImage}')`;
@@ -531,28 +498,23 @@
             });
         }
 
-        // Initialize Card Creation Routine
         generateMemoryDashboard();
 
-        // ROUTER VIEW MANAGEMENT CONTROL FLOWS
         function openRoomGallery(category) {
             const dataPool = MemoryDatabase[category];
             const dashboardHub = document.getElementById('dashboard-hub');
             const galleryStage = document.getElementById('gallery-stage');
             const gridOutput = document.getElementById('active-polaroid-grid');
             
-            // Set Headers
             document.getElementById('active-room-title').innerText = category.replace('_', ' ').replace('-', ' ') + " Room";
             document.getElementById('active-room-badge').innerText = `${dataPool.length} Memories Active`;
             
-            gridOutput.innerHTML = ""; // Flush old nodes
+            gridOutput.innerHTML = ""; 
 
-            // Render matching subfolder assets as Polaroids
             dataPool.forEach(item => {
                 const card = document.createElement('div');
                 card.className = 'memory-card';
                 
-                // Inject random polaroid tilt variations natively
                 const subtleTilt = (Math.random() * 4 - 2).toFixed(2);
                 card.style.transform = `rotate(${subtleTilt}deg)`;
 
@@ -580,7 +542,6 @@
                 gridOutput.appendChild(card);
             });
 
-            // Handle View Adjustments smoothly
             dashboardHub.style.display = 'none';
             galleryStage.style.display = 'block';
             window.scrollTo({ top: document.getElementById('gallery-stage').offsetTop - 20, behavior: 'smooth' });
@@ -640,22 +601,49 @@
         resizeCanvas();
         handleParticles();
 
-        /* 🔊 AUDIO UNMUTE EVENT LISTENER SOLUTION */
-        // Unmutes the background intro video stream instantly upon the user's very first gesture
-        document.addEventListener('click', () => {
+        /* 🔊 AUDIO WORKAROUND: Play video explicitly via user gesture */
+        function playIntroWithAudio() {
+            const introVid = document.getElementById('intro-video');
+            const playOverlay = document.getElementById('play-overlay');
+            
+            // Hide play overlay icon immediately
+            playOverlay.style.opacity = '0';
+            playOverlay.style.pointerEvents = 'none';
+            
+            // Explicitly play video with volume active
+            introVid.muted = false;
+            introVid.volume = 1.0; 
+            
+            introVid.play().catch(err => {
+                console.log("Playback blocked: ", err);
+                // Fallback attempt if something is still acting strange
+                introVid.muted = true;
+                introVid.play();
+            });
+        }
+
+        // Handles clean layout dismissal when the user clicks the running video to skip into the main site
+        document.getElementById('intro-video').addEventListener('click', () => {
+            dismissSplashScreen();
+        });
+
+        function dismissSplashScreen() {
             const introVid = document.getElementById('intro-video');
             if (introVid) {
-                introVid.muted = false;
+                introVid.pause();
             }
-        }, { once: true }); // '{ once: true }' ensures this listener cleans itself up after firing once
-
-        function startExperience() {
-            document.getElementById('intro-video').pause();
-            document.getElementById('bg-music').play().catch(e => console.log("Audio play safety handle: ", e));
+            // Seamless switch to main site loop music
+            document.getElementById('bg-music').play().catch(e => console.log("Music trigger:", e));
+            
             const splash = document.getElementById('splash-screen');
             splash.style.opacity = '0';
             splash.style.visibility = 'hidden';
         }
+
+        // Auto-terminates intro slide naturally if video finishes playing completely on its own
+        document.getElementById('intro-video').addEventListener('ended', () => {
+            dismissSplashScreen();
+        });
 
         function openVideoModal(src, text) {
             document.getElementById('modal-body').innerHTML = `
