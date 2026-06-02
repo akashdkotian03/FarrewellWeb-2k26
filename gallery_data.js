@@ -375,18 +375,38 @@ const MemoryDatabase = {
     "bca": [
         {
             "type": "image",
-            "src": "https://res.cloudinary.com/dk9yhsklq/image/upload/v1780158599/gallery/BCA/Akash.jpg",
-            "title": "Akash"
+            "src": "https://res.cloudinary.com/dk9yhsklq/image/upload/v1780298041/gallery/BCA/Memory_1.jpg",
+            "title": "Memory 1"
         },
         {
             "type": "image",
-            "src": "https://res.cloudinary.com/dk9yhsklq/image/upload/v1780158599/gallery/BCA/Fazil.jpg",
-            "title": "Fazil"
+            "src": "https://res.cloudinary.com/dk9yhsklq/image/upload/v1780298041/gallery/BCA/Memory_2.jpg",
+            "title": "Memory 2"
         },
         {
             "type": "image",
-            "src": "https://res.cloudinary.com/dk9yhsklq/image/upload/v1780158598/gallery/BCA/Nishan.jpg",
-            "title": "Nishan"
+            "src": "https://res.cloudinary.com/dk9yhsklq/image/upload/v1780298042/gallery/BCA/Memory_3.jpg",
+            "title": "Memory 3"
+        },
+        {
+            "type": "image",
+            "src": "https://res.cloudinary.com/dk9yhsklq/image/upload/v1780298070/gallery/BCA/Memory_4.jpg",
+            "title": "Memory 4"
+        },
+        {
+            "type": "image",
+            "src": "https://res.cloudinary.com/dk9yhsklq/image/upload/v1780298081/gallery/BCA/Memory_5.jpg",
+            "title": "Memory 5"
+        },
+        {
+            "type": "image",
+            "src": "https://res.cloudinary.com/dk9yhsklq/image/upload/v1780298042/gallery/BCA/Memory_6.jpg",
+            "title": "Memory 6"
+        },
+        {
+            "type": "video",
+            "src": "https://res.cloudinary.com/dk9yhsklq/video/upload/v1780371328/gallery/BCA/WhatsApp_Video_2026-06-01_at_8.47.21_AM.mp4",
+            "title": "Whatsapp Video 2026 06 01 At 8.47.21 Am"
         }
     ],
     "bcom": [
@@ -636,6 +656,11 @@ const MemoryDatabase = {
             "type": "image",
             "src": "https://res.cloudinary.com/dk9yhsklq/image/upload/v1780209186/gallery/CULTURAL_FESTS/IMG-20260304-WA0058.jpg",
             "title": "Img 20260304 Wa0058"
+        },
+        {
+            "type": "image",
+            "src": "https://res.cloudinary.com/dk9yhsklq/image/upload/v1780371127/gallery/CULTURAL_FESTS/WhatsApp_Image_2026-05-31_at_12.50.32_PM.jpg",
+            "title": "Whatsapp Image 2026 05 31 At 12.50.32 Pm"
         },
         {
             "type": "video",
