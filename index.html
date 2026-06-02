@@ -407,8 +407,7 @@
     <canvas id="sparkle-canvas"></canvas>
 
     <audio id="bg-music" loop>
-        <source src="Background_Music.mpeg" type="audio/mpeg">
-        <source src="Background_Music.mpeg" type="audio/mp3">
+        <source src="background-music.mp3" type="audio/mpeg">
     </audio>
 
     <div id="splash-screen">
@@ -587,3 +586,117 @@
 
         /* ANIMATION CANVAS ENGINE FOR AMBIENT SPARKLES */
         const canvas = document.getElementById('sparkle-canvas');
+        const ctx = canvas.getContext('2d');
+        let backgroundStars = [];
+        const celebratoryColors = ['#ffd700', '#f3e5ab', '#ffffff', '#f43f5e'];
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            initBackgroundStars(); 
+        }
+        window.addEventListener('resize', resizeCanvas);
+
+        function initBackgroundStars() {
+            backgroundStars = [];
+            for (let i = 0; i < 125; i++) {
+                backgroundStars.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    size: Math.random() * 1.5 + 0.5,
+                    color: celebratoryColors[Math.floor(Math.random() * celebratoryColors.length)],
+                    angle: Math.random() * Math.PI * 2,
+                    speed: Math.random() * 0.03 + 0.015 
+                });
+            }
+        }
+
+        function handleParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = 0; i < backgroundStars.length; i++) {
+                let star = backgroundStars[i];
+                star.angle += star.speed;
+                ctx.save();
+                ctx.globalAlpha = 0.15 + (Math.sin(star.angle) + 1) * 0.42;
+                ctx.shadowBlur = 5;
+                ctx.shadowColor = star.color;
+                ctx.fillStyle = star.color;
+                ctx.beginPath();
+                ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.restore();
+            }
+            requestAnimationFrame(handleParticles);
+        }
+
+        resizeCanvas();
+        handleParticles();
+
+        /* 🔊 AUDIO WORKAROUND: Play video explicitly via user gesture */
+        function playIntroWithAudio() {
+            const introVid = document.getElementById('intro-video');
+            const playOverlay = document.getElementById('play-overlay');
+            const skipButton = document.getElementById('dynamic-skip');
+            
+            // Hide play overlay icon immediately
+            playOverlay.style.opacity = '0';
+            playOverlay.style.pointerEvents = 'none';
+            
+            // Show the minimalist skip button at the bottom now that video is playing
+            skipButton.style.display = 'block';
+            
+            // Explicitly play video with volume active
+            introVid.muted = false;
+            introVid.volume = 1.0; 
+            
+            introVid.play().catch(err => {
+                console.log("Playback blocked: ", err);
+                introVid.muted = true;
+                introVid.play();
+            });
+        }
+
+        function dismissSplashScreen(event) {
+            // Prevent background overlay click confusion when clicking button directly
+            if (event) event.stopPropagation();
+            
+            const introVid = document.getElementById('intro-video');
+            if (introVid) {
+                introVid.pause();
+            }
+            // Seamless switch to main site loop music
+            document.getElementById('bg-music').play().catch(e => console.log("Music trigger:", e));
+            
+            const splash = document.getElementById('splash-screen');
+            splash.style.opacity = '0';
+            splash.style.visibility = 'hidden';
+        }
+
+        // Auto-terminates intro slide naturally if video finishes playing completely on its own
+        document.getElementById('intro-video').addEventListener('ended', () => {
+            dismissSplashScreen();
+        });
+
+        function openVideoModal(src, text) {
+            document.getElementById('modal-body').innerHTML = `
+                <video class="modal-media-target" src="${src}" controls autoplay></video>
+                <p class="modal-desc">${text}</p>
+            `;
+            document.getElementById('lightbox').style.display = 'flex';
+        }
+
+        function openImageModal(src, text) {
+            document.getElementById('modal-body').innerHTML = `
+                <img class="modal-media-target" src="${src}" alt="Snapshot">
+                <p class="modal-desc">${text}</p>
+            `;
+            document.getElementById('lightbox').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('modal-body').innerHTML = "";
+            document.getElementById('lightbox').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
