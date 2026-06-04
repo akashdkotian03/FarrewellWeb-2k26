@@ -380,13 +380,38 @@ const MemoryDatabase = {
         },
         {
             "type": "image",
+            "src": "https://res.cloudinary.com/dk9yhsklq/image/upload/v1780498919/gallery/BCA/Memory_12.jpg",
+            "title": "Memory 12"
+        },
+        {
+            "type": "image",
+            "src": "https://res.cloudinary.com/dk9yhsklq/image/upload/v1780498923/gallery/BCA/Memory_13.jpg",
+            "title": "Memory 13"
+        },
+        {
+            "type": "image",
             "src": "https://res.cloudinary.com/dk9yhsklq/image/upload/v1780298041/gallery/BCA/Memory_2.jpg",
             "title": "Memory 2"
         },
         {
             "type": "image",
+            "src": "https://res.cloudinary.com/dk9yhsklq/image/upload/v1780504755/gallery/BCA/Memory_27.jpg",
+            "title": "Memory 27"
+        },
+        {
+            "type": "image",
             "src": "https://res.cloudinary.com/dk9yhsklq/image/upload/v1780298042/gallery/BCA/Memory_3.jpg",
             "title": "Memory 3"
+        },
+        {
+            "type": "image",
+            "src": "https://res.cloudinary.com/dk9yhsklq/image/upload/v1780504759/gallery/BCA/Memory_31.jpg",
+            "title": "Memory 31"
+        },
+        {
+            "type": "image",
+            "src": "https://res.cloudinary.com/dk9yhsklq/image/upload/v1780504766/gallery/BCA/Memory_34.jpg",
+            "title": "Memory 34"
         },
         {
             "type": "image",
@@ -405,8 +430,73 @@ const MemoryDatabase = {
         },
         {
             "type": "video",
+            "src": "https://res.cloudinary.com/dk9yhsklq/video/upload/v1780498885/gallery/BCA/Memory_10.mp4",
+            "title": "Memory 10"
+        },
+        {
+            "type": "video",
+            "src": "https://res.cloudinary.com/dk9yhsklq/video/upload/v1780498916/gallery/BCA/Memory_11.mp4",
+            "title": "Memory 11"
+        },
+        {
+            "type": "video",
+            "src": "https://res.cloudinary.com/dk9yhsklq/video/upload/v1780502629/gallery/BCA/Memory_14.mp4",
+            "title": "Memory 14"
+        },
+        {
+            "type": "video",
+            "src": "https://res.cloudinary.com/dk9yhsklq/video/upload/v1780502642/gallery/BCA/Memory_15.mp4",
+            "title": "Memory 15"
+        },
+        {
+            "type": "video",
+            "src": "https://res.cloudinary.com/dk9yhsklq/video/upload/v1780504845/gallery/BCA/Memory_25.mp4",
+            "title": "Memory 25"
+        },
+        {
+            "type": "video",
+            "src": "https://res.cloudinary.com/dk9yhsklq/video/upload/v1780504780/gallery/BCA/Memory_28.mp4",
+            "title": "Memory 28"
+        },
+        {
+            "type": "video",
+            "src": "https://res.cloudinary.com/dk9yhsklq/video/upload/v1780504847/gallery/BCA/Memory_29.mp4",
+            "title": "Memory 29"
+        },
+        {
+            "type": "video",
+            "src": "https://res.cloudinary.com/dk9yhsklq/video/upload/v1780504862/gallery/BCA/Memory_30.mp4",
+            "title": "Memory 30"
+        },
+        {
+            "type": "video",
+            "src": "https://res.cloudinary.com/dk9yhsklq/video/upload/v1780504922/gallery/BCA/Memory_32.mp4",
+            "title": "Memory 32"
+        },
+        {
+            "type": "video",
+            "src": "https://res.cloudinary.com/dk9yhsklq/video/upload/v1780507727/gallery/BCA/Memory_37.mp4",
+            "title": "Memory 37"
+        },
+        {
+            "type": "video",
+            "src": "https://res.cloudinary.com/dk9yhsklq/video/upload/v1780507614/gallery/BCA/Memory_38.mp4",
+            "title": "Memory 38"
+        },
+        {
+            "type": "video",
+            "src": "https://res.cloudinary.com/dk9yhsklq/video/upload/v1780498857/gallery/BCA/Memory_9.mp4",
+            "title": "Memory 9"
+        },
+        {
+            "type": "video",
             "src": "https://res.cloudinary.com/dk9yhsklq/video/upload/v1780371328/gallery/BCA/WhatsApp_Video_2026-06-01_at_8.47.21_AM.mp4",
             "title": "Whatsapp Video 2026 06 01 At 8.47.21 Am"
+        },
+        {
+            "type": "video",
+            "src": "https://res.cloudinary.com/dk9yhsklq/video/upload/v1780504850/gallery/BCA/WhatsApp_Video_2026-06-03_at_8.58.39_PM.mp4",
+            "title": "Whatsapp Video 2026 06 03 At 8.58.39 Pm"
         }
     ],
     "bcom": [
